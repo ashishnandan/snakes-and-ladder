@@ -20,9 +20,9 @@ public class Player {
         return boardLocation;
     }
 
-    public int updateLocation(int diceNumber) {
+    public void updateLocation(int diceNumber) {
         int newLocation = boardLocation + diceNumber;
-        if (newLocation <= Board.size) return newLocation;
-        return boardLocation;
+        if (newLocation <= Board.size)
+            boardLocation = newLocation;
     }
 }

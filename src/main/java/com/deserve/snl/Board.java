@@ -9,4 +9,8 @@ public class Board {
     public Board(Player player) {
         this.player = player;
     }
+
+    public boolean isGameRunning() {
+        return player.getBoardLocation() < 100;
+    }
 }
