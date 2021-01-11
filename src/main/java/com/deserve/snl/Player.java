@@ -8,6 +8,11 @@ public class Player {
 
     private int boardLocation = 0;
 
+    public Player(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

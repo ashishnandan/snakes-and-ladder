@@ -6,11 +6,12 @@ public class Board {
 
     private Player player;
 
-    public Board(Player player) {
-        this.player = player;
-    }
-
     public boolean isGameRunning() {
         return player.getBoardLocation() < 100;
+    }
+
+    public void addPlayer(Player player) {
+        if (player != null)
+            this.player = player;
     }
 }
