@@ -23,7 +23,7 @@ public class SnakesAndLadderApplication {
         for (int i = 0; i < numberOfTurns; i++) {
             final int result = rollDice();
             System.out.println("Turn" + (i + 1) + ":" + result);
-            player.updateLocation(result);
+            player.updateLocation(result, snakes);
             System.out.println("Player Location : " + player.getBoardLocation());
         }
     }

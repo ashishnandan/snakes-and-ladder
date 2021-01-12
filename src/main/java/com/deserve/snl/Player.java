@@ -1,5 +1,7 @@
 package com.deserve.snl;
 
+import java.util.List;
+
 public class Player {
 
     private String name;
@@ -25,9 +27,20 @@ public class Player {
         return boardLocation;
     }
 
-    public void updateLocation(int diceNumber) {
+    public void updateLocation(int diceNumber, List<Snake> snakes) {
         int newLocation = boardLocation + diceNumber;
-        if (newLocation <= Board.size)
-            boardLocation = newLocation;
+        if (newLocation >= Board.size)
+            return;
+        if (newLocation <= Board.size) {
+            for (Snake snake : snakes) {
+                if (snake.getStart() == newLocation) {
+                    System.out
+                            .println("Snake Bite at " + newLocation + ", go to " + snake.getEnd());
+                    newLocation = snake.getEnd();
+                    break;
+                }
+            }
+        }
+        boardLocation = newLocation;
     }
 }
