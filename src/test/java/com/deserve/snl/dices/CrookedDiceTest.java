@@ -16,5 +16,4 @@ class CrookedDiceTest {
             assertTrue(integers.contains(new CrookedDice().rollDice()));
         }
     }
-
 }
