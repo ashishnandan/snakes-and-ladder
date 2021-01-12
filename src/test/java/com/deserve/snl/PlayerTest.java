@@ -11,20 +11,19 @@ public class PlayerTest {
 
     @BeforeEach
     void setUp() {
-        player = new Player();
+        player = new Player("P1", 1);
     }
 
     @Test
     public void updateLocation(){
-        Player player1 = new Player();
-        player1.updateLocation(55);
-        assertEquals(55, player1.getBoardLocation());
+        player.updateLocation(55);
+        assertEquals(55, player.getBoardLocation());
 
-        player1.updateLocation(44);
-        assertEquals(99, player1.getBoardLocation());
+        player.updateLocation(44);
+        assertEquals(99, player.getBoardLocation());
 
         // 3 exceeds 100, so last location will be retained
-        player1.updateLocation(3);
-        assertEquals(99, player1.getBoardLocation());
+        player.updateLocation(3);
+        assertEquals(99, player.getBoardLocation());
     }
 }
