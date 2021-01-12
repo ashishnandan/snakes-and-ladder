@@ -1,10 +1,12 @@
 package com.deserve.snl;
 
+import com.deserve.snl.dices.CrookedDice;
+import com.deserve.snl.dices.Dice;
+import com.deserve.snl.dices.IDice;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import static com.deserve.snl.Dice.rollDice;
 
 public class SnakesAndLadderApplication {
 
@@ -17,11 +19,11 @@ public class SnakesAndLadderApplication {
         this.player = player;
     }
 
-    public void run(int numberOfTurns, List<Snake> snakes) {
+    public void run(int numberOfTurns, List<Snake> snakes, IDice dice) {
         board.addPlayer(player);
         board.addSnakesToBoard(snakes);
         for (int i = 0; i < numberOfTurns; i++) {
-            final int result = rollDice();
+            final int result = dice.rollDice();
             System.out.println("Turn" + (i + 1) + ":" + result);
             player.updateLocation(result, snakes);
             System.out.println("Player Location : " + player.getBoardLocation());
@@ -35,8 +37,16 @@ public class SnakesAndLadderApplication {
         System.out.println("Please enter the snakes on the board with comma separated start and " +
                 "end values. e.g. 15:5,34:21");
         String snakesCoordinates = scanner.next();
+        System.out.println("Type of Dice (1 - Normal, 2 - Crooked) : ");
+        int type = scanner.nextInt();
+        IDice dice = null;
+        if (type == 2)
+            dice = new CrookedDice();
+        else
+            dice = new Dice();
+
         new SnakesAndLadderApplication(new Board(), new Player("P1", 1)).run(numberOfTurns,
-                convertStringToSnakeObject(snakesCoordinates));
+                convertStringToSnakeObject(snakesCoordinates), dice);
     }
 
     private static List<Snake> convertStringToSnakeObject(String snakesCoordinates) {

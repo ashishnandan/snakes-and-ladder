@@ -1,5 +1,6 @@
 package com.deserve.snl;
 
+import com.deserve.snl.dices.Dice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

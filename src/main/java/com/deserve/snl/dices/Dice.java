@@ -1,10 +1,10 @@
-package com.deserve.snl;
+package com.deserve.snl.dices;
 
 import java.util.Random;
 
-public class Dice {
+public class Dice implements IDice{
 
-    public static int rollDice() {
+    public int rollDice() {
         // The game will have a six sided dice numbered from 1 to 6 and will always
         // give a random number on rolling it.
         return new Random().nextInt(6) + 1;
